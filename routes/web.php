@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@Index');
+Route::post('/todo', 'TodoController@Insert');
+Route::put('/todo', 'TodoController@Update');
+
+
