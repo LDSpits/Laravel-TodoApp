@@ -13,5 +13,5 @@
 
 Route::get('/', 'HomeController@Index');
 Route::post('/todo', 'TodoController@Insert');
-Route::put('/todo', 'TodoController@Update');
+Route::Patch('/todo', 'TodoController@Update');
 Route::Delete('/todo/{id}', 'TodoController@Delete');
