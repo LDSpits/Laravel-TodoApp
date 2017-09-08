@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
 
 class TodoController extends Controller
 {
-    //path: /todo , method: POST
-    function Insert(Request $request){
+    //path: /todo ,method: POST
+    function Insert(\App\Http\Requests\CreateTodoItem $request){
         
         $instantiatedModel = new \App\TodoItem();
 
@@ -26,7 +27,7 @@ class TodoController extends Controller
         return redirect('/');
     }
 
-    //path: /todo , method: PUT
+    //path: /todo ,method: PUT
     function Update(Request $request){
         $requestedModel = \App\TodoItem::Find($request->id);
 
@@ -37,6 +38,14 @@ class TodoController extends Controller
         echo $requestedModel->isDone;
 
         $requestedModel->Save();
+
+        return redirect('/');
+    }
+
+    function Delete($id){
+
+        $requestedModel->findorfail($id);
+        $requestedModel->Delete();
 
         return redirect('/');
     }

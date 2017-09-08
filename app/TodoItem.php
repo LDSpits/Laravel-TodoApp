@@ -9,4 +9,8 @@ class TodoItem extends Model
     protected $fillable = [
         'name','description','isDone'
     ];
+
+    protected $hidden = [
+        'id'
+    ];
 }

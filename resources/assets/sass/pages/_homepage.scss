@@ -25,9 +25,21 @@
     }
 }
 
+.dashboard-new{
+
+    &__text{
+        width: 100%;
+        margin-bottom: 0.5vh;
+    }
+}
+
 .todoitem{
     border: solid $black 1px;
     width: 90%;
     height: 20%;
     margin-top: 1vh;
+
+    &__text{
+        margin-left: 0.5vw;
+    }
 }

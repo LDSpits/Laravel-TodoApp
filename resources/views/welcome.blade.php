@@ -10,7 +10,7 @@
     <body>
         <title>Todo-App</title>
 
-        <h1 class="header">Laravel TodoApp</h1>
+        <h1 class="header">My todo's</h1>
 
         <section class="dashboard">
 
@@ -19,19 +19,9 @@
 
                 @foreach($todos as $todo)
                     @if($todo->isDone == false)
-                        <li class="todoitem">
-                            <h4>{{$todo->title}}</h4>
-                            <p>{{$todo->description}}</p>
+                        
+                        @include('partials._todoitem',['todo' => $todo])
 
-                            <form action="/todo" method="post">
-                                {{ method_field('PUT') }}
-                                {{ csrf_field() }}
-                                <input type="hidden" name="id" value="{{ $todo->id }}">
-                                <input type="hidden" name="isDone" value="true">
-                                <input type="submit" value="mark as done">
-                            </form>
-
-                        </li>
                     @endif
                 @endforeach
 
@@ -41,29 +31,19 @@
                 <h2 class="dashboard__header">Done</h2>
                 @foreach($todos as $todo)
                     @if($todo->isDone == true)
-                        <li class="todoitem">
-                            <h4>{{$todo->title}}</h4>
-                            <p>{{$todo->description}}</p>
+                        
+                        @include('partials._todoitem',['todo' => $todo])
 
-                            <form action="/todo" method="post">
-                                {{ method_field('PUT') }}
-                                {{ csrf_field() }}
-                                <input type="hidden" name="id" value="{{ $todo->id }}">
-                                <input type="hidden" name="isDone" value="false"> 
-                                <input type="submit" value="mark as todo">
-                            </form>
-
-                        </li>
                     @endif
                 @endforeach
             </ul>
 
             <ul class="dashboard__list">
                 <h2 class="dashboard__header">Create</h2>
-                <form action="/todo" method="post">
+                <form action="/todo" method="post" class="dashboard-new">
                     {{ csrf_field() }}
-                    <input type="text" name="name" />
-                    <textarea name="description" cols="30" rows="10"></textarea>
+                    <input type="text" name="name" placeholder="todo title" class="dashboard-new__text"/>
+                    <textarea name="description" cols="30" rows="10" class="dashboard-new__text" placeholder="description"></textarea>
                     <input type="checkbox" name="isDone" id="0" value="true">
                     <input type="submit" value="voeg toe">
                 </form>

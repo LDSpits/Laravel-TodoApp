@@ -8389,10 +8389,19 @@ button.close {
   text-align: center;
 }
 
+.dashboard-new__text {
+  width: 100%;
+  margin-bottom: 0.5vh;
+}
+
 .todoitem {
   border: solid #000000 1px;
   width: 90%;
   height: 20%;
   margin-top: 1vh;
+}
+
+.todoitem__text {
+  margin-left: 0.5vw;
 }
 
